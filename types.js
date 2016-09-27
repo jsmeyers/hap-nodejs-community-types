@@ -16,9 +16,9 @@ module.exports = function(homebridge) {
       perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
     });
     this.value = this.getDefaultValue();
-  }
-  CommunityTypes.AudioDataURL.UUID = 'FF000001-0000-1000-8000-135D67EC4377'
-  inherits(CommunityTypes.AudioDataURL, Characteristic);
+  };
+  CommunityTypes.Timestamp.UUID = 'FF000001-0000-1000-8000-135D67EC4377';
+  inherits(CommunityTypes.Timestamp, Characteristic);
 
   CommunityTypes.AudioDataURL = function() {
     Characteristic.call(this, "Audio URL", CommunityTypes.AudioDataURL.UUID);
@@ -26,8 +26,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.STRING,
       perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
     });
-  }
-  CommunityTypes.AudioDataURL.UUID = 'FF000002-0000-1000-8000-135D67EC4377'
+  };
+  CommunityTypes.AudioDataURL.UUID = 'FF000002-0000-1000-8000-135D67EC4377';
   inherits(CommunityTypes.AudioDataURL, Characteristic);
 
   CommunityTypes.VideoDataURL = function() {
@@ -36,10 +36,9 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.STRING,
       perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
     });
-  }
-  CommunityTypes.VideoDataURL.UUID = 'FF000003-0000-1000-8000-135D67EC4377'
+  };
+  CommunityTypes.VideoDataURL.UUID = 'FF000003-0000-1000-8000-135D67EC4377';
   inherits(CommunityTypes.VideoDataURL, Characteristic);
-
 
   CommunityTypes.AudioVolume = function() {
     Characteristic.call(this, 'Audio Volume', CommunityTypes.AudioVolume.UUID);
@@ -248,6 +247,141 @@ module.exports = function(homebridge) {
   };
   CommunityTypes.MediaHeight.UUID = '00004004-0000-1000-8000-135D67EC4377';
   inherits(CommunityTypes.MediaHeight, Characteristic);
+  
+// courtesy of https://gist.github.com/gomfunkel/b1a046d729757120907c
+  CommunityTypes.Volt = function() {
+    Characteristic.call(this, 'Volt', CommunityTypes.Volt.UUID);
+    // V = value / 10
+    this.setProps({
+      format:   Characteristic.Formats.UINT16,
+      unit:     "volts",
+      minValue: 0,
+      maxValue: 65535,
+      minStep:  1,
+      perms:    [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.Volt.UUID = 'E863F10A-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.Volt, Characteristic);
+
+  CommunityTypes.Ampere = function() {
+    Characteristic.call(this, 'Ampere', CommunityTypes.Ampere.UUID);
+    // A = value / 100
+    this.setProps({
+      format:   Characteristic.Formats.UINT16,
+      unit:     "amps",
+      minValue: 0,
+      maxValue: 65535,
+      minStep:  1,
+      perms:    [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.Ampere.UUID = 'E863F126-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.Ampere, Characteristic);
+
+  CommunityTypes.Watt = function() {
+    Characteristic.call(this, 'Watt', CommunityTypes.Watt.UUID);
+    // W = value / 10
+    this.setProps({
+      format:   Characteristic.Formats.UINT16,
+      unit:     "watts",
+      minValue: 0,
+      maxValue: 65535,
+      minStep:  1,
+      perms:    [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.Watt.UUID = 'E863F10D-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.Watt, Characteristic);
+
+  CommunityTypes.VoltAmpere = function() {
+    Characteristic.call(this, 'Volt-Ampere', CommunityTypes.VoltAmpere.UUID);
+    // VA = value / 10
+    this.setProps({
+      format:   Characteristic.Formats.UINT16,
+      unit:     "VA",
+      minValue: 0,
+      maxValue: 65535,
+      minStep:  1,
+      perms:    [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.VoltAmpere.UUID = 'E863F110-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.VoltAmpere, Characteristic);
+
+  CommunityTypes.KilowattHour = function() {
+    Characteristic.call(this, 'Kilowatt-Hour', CommunityTypes.KilowattHour.UUID);
+    // kWh = value / 1000
+    this.setProps({
+      format:   Characteristic.Formats.UINT32,
+      unit:     "kWh",
+      minValue: 0,
+      maxValue: 65535,
+      minStep:  1,
+      perms:    [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.KilowattHour.UUID = 'E863F10C-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.KilowattHour, Characteristic);
+
+  CommunityTypes.KilowattVoltAmpereHour = function() {
+    Characteristic.call(this, 'Kilovolt-Ampere-Hour', CommunityTypes.KilowattVoltAmpereHour.UUID);
+    // kVAh = value / 1000
+    this.setProps({
+      format:   Characteristic.Formats.UINT32,
+      unit:     "kVAh",
+      minValue: 0,
+      maxValue: 65535,
+      minStep:  1,
+      perms:    [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.KilowattVoltAmpereHour.UUID = 'E863F127-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.KilowattVoltAmpereHour, Characteristic);
+
+// courtesy of https://github.com/robi-van-kinobi/homebridge-cubesensors
+
+  CommunityTypes.AtmosphericPressureLevel = function () {
+    Characteristic.call(this, 'barometric pressure', CommunityTypes.AtmosphericPressureLevel.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      unit:     "mbar",
+      minValue: 800,
+      maxValue: 1200,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.AtmosphericPressureLevel.UUID = '28FDA6BC-9C2A-4DEA-AAFD-B49DB6D155AB';
+  inherits(CommunityTypes.AtmosphericPressureLevel, Characteristic);
+
+  CommunityTypes.NoiseLevel = function () {
+    Characteristic.call(this, 'noise level', CommunityTypes.NoiseLevel.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      unit:     "dB",
+      minValue: 0,
+      maxValue: 200,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.NoiseLevel.UUID = '2CD7B6FD-419A-4740-8995-E3BFE43735AB';
+  inherits(CommunityTypes.NoiseLevel, Characteristic);
 
   // Services
 
@@ -344,8 +478,42 @@ module.exports = function(homebridge) {
     this.addOptionalCharacteristic(Characteristic.MotionDetected);
     this.addOptionalCharacteristic(Characteristic.StatusTampered);
     this.addOptionalCharacteristic(Characteristic.Name);
-  }
+  };
   CommunityTypes.SecurityCameraService.UUID = '00000005-0000-1000-8000-135D67EC4377';
+
+// courtesy of https://github.com/robi-van-kinobi/homebridge-cubesensors
+  CommunityTypes.AtmosphericPressureSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.AtmosphericPressureSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(Characteristic.AtmosphericPressureLevel);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.AtmosphericPressureSensor.UUID = 'B77831FD-D66A-46A4-B66D-FD7EE8DFE3CE';
+  inherits(CommunityTypes.AtmosphericPressureSensor, Service);
+
+  CommunityTypes.NoiseLevelSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.NoiseLevelSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(Characteristic.NoiseLevel);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.NoiseLevelSensor.UUID = '28FDA6BC-9C2A-4DEA-AAFD-B49DB6D155AB';
+  inherits(CommunityTypes.NoiseLevelSensor, Service);
 
   return CommunityTypes;
 };
+
