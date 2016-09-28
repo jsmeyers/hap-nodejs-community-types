@@ -298,8 +298,8 @@ module.exports = function(homebridge) {
   CommunityTypes.Watts.UUID = 'E863F10D-079E-48FF-8F27-9C2605A29F52';
   inherits(CommunityTypes.Watts, Characteristic);
 
-  CommunityTypes.VoltAmpere = function() {
-    Characteristic.call(this, 'Volt-Amperes', CommunityTypes.VoltAmpere.UUID);
+  CommunityTypes.VoltAmperes = function() {
+    Characteristic.call(this, 'Volt-Amperes', CommunityTypes.VoltAmperes.UUID);
     // VA = value / 10
     this.setProps({
       format:   Characteristic.Formats.UINT16,
@@ -311,8 +311,8 @@ module.exports = function(homebridge) {
     });
     this.value = this.getDefaultValue();
   };
-  CommunityTypes.VoltAmpere.UUID = 'E863F110-079E-48FF-8F27-9C2605A29F52';
-  inherits(CommunityTypes.VoltAmpere, Characteristic);
+  CommunityTypes.VoltAmperes.UUID = 'E863F110-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.VoltAmperes, Characteristic);
 
   CommunityTypes.KilowattHours = function() {
     // aka "Total Consumption"
