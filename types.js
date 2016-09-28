@@ -251,10 +251,9 @@ module.exports = function(homebridge) {
 // courtesy of https://gist.github.com/gomfunkel/b1a046d729757120907c
   CommunityTypes.Volts = function() {
     Characteristic.call(this, 'Volts', CommunityTypes.Volts.UUID);
-    // V = value / 10
     this.setProps({
       format:   Characteristic.Formats.UINT16,
-      unit:     "volts",
+      unit:     "V",
       minValue: 0,
       maxValue: 65535,
       minStep:  1,
@@ -266,11 +265,10 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.Volts, Characteristic);
 
   CommunityTypes.Amperes = function() {
-    Characteristic.call(this, 'Amperes', CommunityTypes.Amperes.UUID);
-    // A = value / 100
+    Characteristic.call(this, 'Amps', CommunityTypes.Amperes.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT16,
-      unit:     "amps",
+      unit:     "A",
       minValue: 0,
       maxValue: 65535,
       minStep:  1,
@@ -282,12 +280,10 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.Amperes, Characteristic);
 
   CommunityTypes.Watts = function() {
-    // aka "Consumption"
-    Characteristic.call(this, 'Watts', CommunityTypes.Watts.UUID);
-    // W = value / 10
+    Characteristic.call(this, 'Consumption', CommunityTypes.Watts.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT16,
-      unit:     "watts",
+      unit:     "W",
       minValue: 0,
       maxValue: 65535,
       minStep:  1,
@@ -299,8 +295,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.Watts, Characteristic);
 
   CommunityTypes.VoltAmperes = function() {
-    Characteristic.call(this, 'Volt-Amperes', CommunityTypes.VoltAmperes.UUID);
-    // VA = value / 10
+    Characteristic.call(this, 'Volt-Amps', CommunityTypes.VoltAmperes.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT16,
       unit:     "VA",
@@ -315,9 +310,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.VoltAmperes, Characteristic);
 
   CommunityTypes.KilowattHours = function() {
-    // aka "Total Consumption"
-    Characteristic.call(this, 'Kilowatt-Hours', CommunityTypes.KilowattHours.UUID);
-    // kWh = value / 1000
+    Characteristic.call(this, 'Total Consumption', CommunityTypes.KilowattHours.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT32,
       unit:     "kWh",
@@ -332,8 +325,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.KilowattHours, Characteristic);
 
   CommunityTypes.KilowattVoltAmpereHour = function() {
-    Characteristic.call(this, 'Kilovolt-Ampere-Hours', CommunityTypes.KilowattVoltAmpereHour.UUID);
-    // kVAh = value / 1000
+    Characteristic.call(this, 'kVAh', CommunityTypes.KilowattVoltAmpereHour.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT32,
       unit:     "kVAh",
