@@ -249,8 +249,8 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.MediaHeight, Characteristic);
   
 // courtesy of https://gist.github.com/gomfunkel/b1a046d729757120907c
-  CommunityTypes.Volt = function() {
-    Characteristic.call(this, 'Volt', CommunityTypes.Volt.UUID);
+  CommunityTypes.Volts = function() {
+    Characteristic.call(this, 'Volts', CommunityTypes.Volts.UUID);
     // V = value / 10
     this.setProps({
       format:   Characteristic.Formats.UINT16,
@@ -262,11 +262,11 @@ module.exports = function(homebridge) {
     });
     this.value = this.getDefaultValue();
   };
-  CommunityTypes.Volt.UUID = 'E863F10A-079E-48FF-8F27-9C2605A29F52';
-  inherits(CommunityTypes.Volt, Characteristic);
+  CommunityTypes.Volts.UUID = 'E863F10A-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.Volts, Characteristic);
 
-  CommunityTypes.Ampere = function() {
-    Characteristic.call(this, 'Ampere', CommunityTypes.Ampere.UUID);
+  CommunityTypes.Amperes = function() {
+    Characteristic.call(this, 'Amperes', CommunityTypes.Amperes.UUID);
     // A = value / 100
     this.setProps({
       format:   Characteristic.Formats.UINT16,
@@ -278,11 +278,12 @@ module.exports = function(homebridge) {
     });
     this.value = this.getDefaultValue();
   };
-  CommunityTypes.Ampere.UUID = 'E863F126-079E-48FF-8F27-9C2605A29F52';
-  inherits(CommunityTypes.Ampere, Characteristic);
+  CommunityTypes.Amperes.UUID = 'E863F126-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.Amperes, Characteristic);
 
-  CommunityTypes.Watt = function() {
-    Characteristic.call(this, 'Watt', CommunityTypes.Watt.UUID);
+  CommunityTypes.Watts = function() {
+    // aka "Consumption"
+    Characteristic.call(this, 'Watts', CommunityTypes.Watts.UUID);
     // W = value / 10
     this.setProps({
       format:   Characteristic.Formats.UINT16,
@@ -294,11 +295,11 @@ module.exports = function(homebridge) {
     });
     this.value = this.getDefaultValue();
   };
-  CommunityTypes.Watt.UUID = 'E863F10D-079E-48FF-8F27-9C2605A29F52';
-  inherits(CommunityTypes.Watt, Characteristic);
+  CommunityTypes.Watts.UUID = 'E863F10D-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.Watts, Characteristic);
 
   CommunityTypes.VoltAmpere = function() {
-    Characteristic.call(this, 'Volt-Ampere', CommunityTypes.VoltAmpere.UUID);
+    Characteristic.call(this, 'Volt-Amperes', CommunityTypes.VoltAmpere.UUID);
     // VA = value / 10
     this.setProps({
       format:   Characteristic.Formats.UINT16,
@@ -313,8 +314,9 @@ module.exports = function(homebridge) {
   CommunityTypes.VoltAmpere.UUID = 'E863F110-079E-48FF-8F27-9C2605A29F52';
   inherits(CommunityTypes.VoltAmpere, Characteristic);
 
-  CommunityTypes.KilowattHour = function() {
-    Characteristic.call(this, 'Kilowatt-Hour', CommunityTypes.KilowattHour.UUID);
+  CommunityTypes.KilowattHours = function() {
+    // aka "Total Consumption"
+    Characteristic.call(this, 'Kilowatt-Hours', CommunityTypes.KilowattHours.UUID);
     // kWh = value / 1000
     this.setProps({
       format:   Characteristic.Formats.UINT32,
@@ -326,11 +328,11 @@ module.exports = function(homebridge) {
     });
     this.value = this.getDefaultValue();
   };
-  CommunityTypes.KilowattHour.UUID = 'E863F10C-079E-48FF-8F27-9C2605A29F52';
-  inherits(CommunityTypes.KilowattHour, Characteristic);
+  CommunityTypes.KilowattHours.UUID = 'E863F10C-079E-48FF-8F27-9C2605A29F52';
+  inherits(CommunityTypes.KilowattHours, Characteristic);
 
   CommunityTypes.KilowattVoltAmpereHour = function() {
-    Characteristic.call(this, 'Kilovolt-Ampere-Hour', CommunityTypes.KilowattVoltAmpereHour.UUID);
+    Characteristic.call(this, 'Kilovolt-Ampere-Hours', CommunityTypes.KilowattVoltAmpereHour.UUID);
     // kVAh = value / 1000
     this.setProps({
       format:   Characteristic.Formats.UINT32,
