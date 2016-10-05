@@ -295,7 +295,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.Watts, Characteristic);
 
   CommunityTypes.VoltAmperes = function() {
-    Characteristic.call(this, 'Volt-Amps', CommunityTypes.VoltAmperes.UUID);
+    Characteristic.call(this, 'Apparent Power', CommunityTypes.VoltAmperes.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT16,
       unit:     "VA",
@@ -325,7 +325,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.KilowattHours, Characteristic);
 
   CommunityTypes.KilowattVoltAmpereHour = function() {
-    Characteristic.call(this, 'kVAh', CommunityTypes.KilowattVoltAmpereHour.UUID);
+    Characteristic.call(this, 'Apparent Energy', CommunityTypes.KilowattVoltAmpereHour.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT32,
       unit:     "kVAh",
