@@ -496,7 +496,7 @@ module.exports = function(homebridge) {
     Service.call(this, displayName, CommunityTypes.NoiseLevelSensor.UUID, subtype);
 
     // Required Characteristics
-    this.addCharacteristic(Characteristic.NoiseLevel);
+    this.addCharacteristic(CommunityTypes.NoiseLevel);
 
     // Optional Characteristics
     this.addOptionalCharacteristic(Characteristic.StatusActive);
