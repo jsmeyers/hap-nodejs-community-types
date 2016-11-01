@@ -361,7 +361,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.AtmosphericPressureLevel, Characteristic);
 
   CommunityTypes.NoiseLevel = function () {
-    Characteristic.call(this, 'noise level', CommunityTypes.NoiseLevel.UUID);
+    Characteristic.call(this, 'Noise Level', CommunityTypes.NoiseLevel.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT8,
       unit:     "dB",
@@ -381,7 +381,7 @@ module.exports = function(homebridge) {
 // courtesy of https://github.com/homespun/homebridge-platform-snmp
 
   CommunityTypes.AirFlow = function () {
-    Characteristic.call(this, 'air flow', CommunityTypes.AirFlow.UUID);
+    Characteristic.call(this, 'Air Flow', CommunityTypes.AirFlow.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT8,
       unit:     "meters/second",
