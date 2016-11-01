@@ -384,7 +384,7 @@ module.exports = function(homebridge) {
     Characteristic.call(this, 'Air Flow', CommunityTypes.AirFlow.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT8,
-      unit:     "meters/second",
+      unit:     "m/s",
       minValue: 0,
       maxValue: 135,
       minStep:  1,
