@@ -7,6 +7,7 @@ module.exports = function(homebridge) {
 
   var CommunityTypes = {};
 
+
   // Characteristics
 
   CommunityTypes.Timestamp = function() {
@@ -377,6 +378,27 @@ module.exports = function(homebridge) {
   CommunityTypes.NoiseLevel.UUID = '2CD7B6FD-419A-4740-8995-E3BFE43735AB';
   inherits(CommunityTypes.NoiseLevel, Characteristic);
 
+// courtesy of https://github.com/homespun/homebridge-platform-snmp
+
+  CommunityTypes.AirFlow = function () {
+    Characteristic.call(this, 'air flow', CommunityTypes.AirFlow.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      unit:     "meters/second",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.AirFlow.UUID = '49c8ae5a-a3a5-41ab-bf1f-12d5654f9f41';
+  inherits(CommunityTypes.AirFlow, Characteristic);
+
+
   // Services
 
   CommunityTypes.AudioDeviceService = function(displayName, subtype) {
@@ -507,6 +529,25 @@ module.exports = function(homebridge) {
   };
   CommunityTypes.NoiseLevelSensor.UUID = '28FDA6BC-9C2A-4DEA-AAFD-B49DB6D155AB';
   inherits(CommunityTypes.NoiseLevelSensor, Service);
+
+// courtesy of https://github.com/homespun/homebridge-platform-snmp
+
+  CommunityTypes.AirFlowSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.AirFlowSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(CommunityTypes.AirFlow);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.AirFlowSensor.UUID = 'AF5C192E-420F-4A13-AB67-B8F3968A4935';
+  inherits(CommunityTypes.AirFlowSensor, Service);
+
 
   return CommunityTypes;
 };
