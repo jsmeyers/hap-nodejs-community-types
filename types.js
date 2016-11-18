@@ -502,7 +502,7 @@ module.exports = function(homebridge) {
     Service.call(this, displayName, CommunityTypes.AtmosphericPressureSensor.UUID, subtype);
 
     // Required Characteristics
-    this.addCharacteristic(Characteristic.AtmosphericPressureLevel);
+    this.addCharacteristic(CommunityTypes.AtmosphericPressureLevel);
 
     // Optional Characteristics
     this.addOptionalCharacteristic(Characteristic.StatusActive);
