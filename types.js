@@ -395,9 +395,61 @@ module.exports = function(homebridge) {
     });
     this.value = this.getDefaultValue();
   };
-  CommunityTypes.AirFlow.UUID = '49c8ae5a-a3a5-41ab-bf1f-12d5654f9f41';
+  CommunityTypes.AirFlow.UUID = '49C8AE5A-A3A5-41AB-BF1F-12D5654F9F41';
   inherits(CommunityTypes.AirFlow, Characteristic);
 
+  CommunityTypes.NitrogenDioxideDetected = function () {
+    Characteristic.call(this, 'Nitrogen Dioxide Detected', CommunityTypes.NitrogenDioxideDetected.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.NitrogenDioxideDetected.UUID = 'D737B40A-3AF0-4316-950F-76090B98C5CF'
+  inherits(CommunityTypes.NitrogenDioxideDetected, Characteristic);
+
+  CommunityTypes.NitrogenDioxideDetected.NO2_LEVELS_NORMAL = 0;
+  CommunityTypes.NitrogenDioxideDetected.NO2_LEVELS_ABNORMAL = 1;
+
+  CommunityTypes.NitrogenDioxideLevel = function () {
+    Characteristic.call(this, 'Nitrogen Dioxide Level', CommunityTypes.NitrogenDioxideLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppm",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.NitrogenDioxideLevel.UUID = 'B762A2AF-D9D0-4A79-814A-E9EBAB0ED290'
+  inherits(CommunityTypes.NitrogenDioxideLevel, Characteristic);
+
+  CommunityTypes.NitrogenDioxidePeakLevel = function () {
+    Characteristic.call(this, 'Nitrogen Dioxide Peak Level', CommunityTypes.NitrogenDioxidePeakLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppm",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.NitrogenDioxidePeakLevel.UUID = 'B6594847-7B88-496C-A1A0-B7860F3D7601'
+  inherits(CommunityTypes.NitrogenDioxidePeakLevel, Characteristic);
 
   // Services
 
@@ -547,6 +599,24 @@ module.exports = function(homebridge) {
   };
   CommunityTypes.AirFlowSensor.UUID = 'AF5C192E-420F-4A13-AB67-B8F3968A4935';
   inherits(CommunityTypes.AirFlowSensor, Service);
+
+  CommunityTypes.NitrogenDioxideSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.NitrogenDioxideSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(CommunityTypes.NitrogenDioxideDetected);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(CommunityTypes.NitrogenDioxideLevel);
+    this.addOptionalCharacteristic(CommunityTypes.NitrogenDioxidePeakLevel);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.NitrogenDioxideSensor.UUID = '9F6B797D-D43B-4C88-9AA0-57018AB8A91E'
+  inherits(CommunityTypes.NitrogenDioxideSensor, Service);
 
 
   return CommunityTypes;
