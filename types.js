@@ -343,7 +343,7 @@ module.exports = function(homebridge) {
 // courtesy of https://github.com/robi-van-kinobi/homebridge-cubesensors
 
   CommunityTypes.AtmosphericPressureLevel = function () {
-    Characteristic.call(this, 'barometric pressure', CommunityTypes.AtmosphericPressureLevel.UUID);
+    Characteristic.call(this, 'Barometric Pressure', CommunityTypes.AtmosphericPressureLevel.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT8,
       unit:     "mbar",
