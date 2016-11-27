@@ -451,6 +451,166 @@ module.exports = function(homebridge) {
   CommunityTypes.NitrogenDioxidePeakLevel.UUID = 'B6594847-7B88-496C-A1A0-B7860F3D7601'
   inherits(CommunityTypes.NitrogenDioxidePeakLevel, Characteristic);
 
+// courtesy of https://github.com/homespun/homebridge-platform-aqe
+  CommunityTypes.OzoneDetected = function () {
+    Characteristic.call(this, 'Ozone Detected', CommunityTypes.OzoneDetected.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.OzoneDetected.UUID = '0168FA60-5CF4-4314-AA45-0F84E389A093'
+  inherits(CommunityTypes.OzoneDetected, Characteristic);
+
+  CommunityTypes.OzoneDetected.O3_LEVELS_NORMAL = 0;
+  CommunityTypes.OzoneDetected.O3_LEVELS_ABNORMAL = 1;
+
+  CommunityTypes.OzoneLevel = function () {
+    Characteristic.call(this, 'Ozone Level', CommunityTypes.OzoneLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppb",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.OzoneLevel.UUID = '03C17FD9-672E-42F5-8DD4-30C6822C739A'
+  inherits(CommunityTypes.OzoneLevel, Characteristic);
+
+  CommunityTypes.OzonePeakLevel = function () {
+    Characteristic.call(this, 'Ozone Peak Level', CommunityTypes.OzonePeakLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppb",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.OzonePeakLevel.UUID = '550EE1FF-FC66-4BB6-A1C1-4B0A07109AE3'
+  inherits(CommunityTypes.OzonePeakLevel, Characteristic);
+
+  CommunityTypes.SodiumDioxideDetected = function () {
+    Characteristic.call(this, 'Sodium Dioxide Detected', CommunityTypes.SodiumDioxideDetected.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.SodiumDioxideDetected.UUID = '4D237DAB-1CB6-4D52-B446-4667F58F7D28'
+  inherits(CommunityTypes.SodiumDioxideDetected, Characteristic);
+
+  CommunityTypes.SodiumDioxideDetected.SO2_LEVELS_NORMAL = 0;
+  CommunityTypes.SodiumDioxideDetected.SO2_LEVELS_ABNORMAL = 1;
+
+  CommunityTypes.SodiumDioxideLevel = function () {
+    Characteristic.call(this, 'Sodium Dioxide Level', CommunityTypes.SodiumDioxideLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppb",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.SodiumDioxideLevel.UUID = '66C4D315-FBEF-470E-9434-B047679F1141'
+  inherits(CommunityTypes.SodiumDioxideLevel, Characteristic);
+
+  CommunityTypes.SodiumDioxidePeakLevel = function () {
+    Characteristic.call(this, 'Sodium Dioxide Peak Level', CommunityTypes.SodiumDioxidePeakLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppb",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.SodiumDioxidePeakLevel.UUID = '4CD6F648-2F92-43D8-86DF-0E8DE75E033B'
+  inherits(CommunityTypes.SodiumDioxidePeakLevel, Characteristic);
+
+  CommunityTypes.VolatileOrganicCompoundDetected = function () {
+    Characteristic.call(this, 'Volatile Organic Compound Detected', CommunityTypes.VolatileOrganicCompoundDetected.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.UINT8,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.VolatileOrganicCompoundDetected.UUID = '65DBC0F5-C40B-4E04-ADED-DC70031B0B82'
+  inherits(CommunityTypes.VolatileOrganicCompoundDetected, Characteristic);
+
+  CommunityTypes.VolatileOrganicCompoundDetected.VOC_LEVELS_NORMAL = 0;
+  CommunityTypes.VolatileOrganicCompoundDetected.VOC_LEVELS_ABNORMAL = 1;
+
+  CommunityTypes.VolatileOrganicCompoundLevel = function () {
+    Characteristic.call(this, 'Volatile Organic Compound Level', CommunityTypes.VolatileOrganicCompoundLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppb",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.VolatileOrganicCompoundLevel.UUID = '35C4C797-193D-4998-879F-A08514E87897'
+  inherits(CommunityTypes.VolatileOrganicCompoundLevel, Characteristic);
+
+  CommunityTypes.VolatileOrganicCompoundPeakLevel = function () {
+    Characteristic.call(this, 'Volatile Organic Compound Peak Level', CommunityTypes.VolatileOrganicCompoundPeakLevel.UUID);
+    this.setProps({
+      format: Characteristic.Formats.FLOAT,
+      unit:     "ppb",
+      minValue: 0,
+      maxValue: 135,
+      minStep:  1,
+      perms:    [
+        Characteristic.Perms.READ,
+        Characteristic.Perms.NOTIFY
+      ]
+    });
+    this.value = this.getDefaultValue();
+  };
+  CommunityTypes.VolatileOrganicCompoundPeakLevel.UUID = 'A62CB784-1916-4BDF-B840-BDB9F8A264E9'
+  inherits(CommunityTypes.VolatileOrganicCompoundPeakLevel, Characteristic);
+
   // Services
 
   CommunityTypes.AudioDeviceService = function(displayName, subtype) {
@@ -617,6 +777,61 @@ module.exports = function(homebridge) {
   };
   CommunityTypes.NitrogenDioxideSensor.UUID = '9F6B797D-D43B-4C88-9AA0-57018AB8A91E'
   inherits(CommunityTypes.NitrogenDioxideSensor, Service);
+
+// courtesy of https://github.com/homespun/homebridge-platform-aqe
+  CommunityTypes.OzoneSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.OzoneSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(CommunityTypes.OzoneDetected);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(CommunityTypes.OzoneLevel);
+    this.addOptionalCharacteristic(CommunityTypes.OzonePeakLevel);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.OzoneSensor.UUID = 'B91C2BD6-D071-4F49-A23B-20721AC6CCEB'
+  inherits(CommunityTypes.OzoneSensor, Service);
+
+  CommunityTypes.SodiumDioxideSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.SodiumDioxideSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(CommunityTypes.SodiumDioxideDetected);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(CommunityTypes.SodiumDioxideLevel);
+    this.addOptionalCharacteristic(CommunityTypes.SodiumDioxidePeakLevel);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.SodiumDioxideSensor.UUID = 'FE7CFB1F-12D0-405D-86FD-7E268D65C453'
+  inherits(CommunityTypes.SodiumDioxideSensor, Service);
+
+  CommunityTypes.VolatileOrganicCompoundSensor = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.VolatileOrganicCompoundSensor.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(CommunityTypes.VolatileOrganicCompoundDetected);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.StatusActive);
+    this.addOptionalCharacteristic(Characteristic.StatusFault);
+    this.addOptionalCharacteristic(Characteristic.StatusLowBattery);
+    this.addOptionalCharacteristic(CommunityTypes.VolatileOrganicCompoundLevel);
+    this.addOptionalCharacteristic(CommunityTypes.VolatileOrganicCompoundPeakLevel);
+    this.addOptionalCharacteristic(Characteristic.StatusTampered);
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.VolatileOrganicCompoundSensor.UUID = '776E34BC-1660-46EC-A33D-2DFE5B958699'
+  inherits(CommunityTypes.VolatileOrganicCompoundSensor, Service);
 
 
   return CommunityTypes;
