@@ -421,7 +421,7 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppm",
       minValue: 0,
-      maxValue: 135,
+      maxValue: 1500,
       minStep:  1,
       perms:    [
         Characteristic.Perms.READ,
@@ -439,7 +439,7 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppm",
       minValue: 0,
-      maxValue: 135,
+      maxValue: 1500,
       minStep:  1,
       perms:    [
         Characteristic.Perms.READ,
@@ -475,8 +475,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppb",
       minValue: 0,
-      maxValue: 135,
-      minStep:  1,
+      maxValue: 1500,
+      minStep:  0.01,
       perms:    [
         Characteristic.Perms.READ,
         Characteristic.Perms.NOTIFY
@@ -493,8 +493,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppb",
       minValue: 0,
-      maxValue: 135,
-      minStep:  1,
+      maxValue: 1500,
+      minStep:  0.01,
       perms:    [
         Characteristic.Perms.READ,
         Characteristic.Perms.NOTIFY
@@ -528,8 +528,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppb",
       minValue: 0,
-      maxValue: 135,
-      minStep:  1,
+      maxValue: 1500,
+      minStep:  0.01,
       perms:    [
         Characteristic.Perms.READ,
         Characteristic.Perms.NOTIFY
@@ -546,8 +546,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppb",
       minValue: 0,
-      maxValue: 135,
-      minStep:  1,
+      maxValue: 1500,
+      minStep:  0.01,
       perms:    [
         Characteristic.Perms.READ,
         Characteristic.Perms.NOTIFY
@@ -581,8 +581,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppb",
       minValue: 0,
-      maxValue: 135,
-      minStep:  1,
+      maxValue: 1500,
+      minStep:  0.01,
       perms:    [
         Characteristic.Perms.READ,
         Characteristic.Perms.NOTIFY
@@ -599,8 +599,8 @@ module.exports = function(homebridge) {
       format: Characteristic.Formats.FLOAT,
       unit:     "ppb",
       minValue: 0,
-      maxValue: 135,
-      minStep:  1,
+      maxValue: 1500,
+      minStep:  0.01,
       perms:    [
         Characteristic.Perms.READ,
         Characteristic.Perms.NOTIFY
