@@ -581,7 +581,7 @@ module.exports = function(homebridge) {
   CommunityTypes.VolatileOrganicCompoundPeakLevel.UUID = 'A62CB784-1916-4BDF-B840-BDB9F8A264E9';
   inherits(CommunityTypes.VolatileOrganicCompoundPeakLevel, Characteristic);
 
-  CommunityTypes.NotificationTet = function() {
+  CommunityTypes.NotificationText = function() {
     Characteristic.call(this, 'Notification Text', CommunityTypes.NotificationText.UUID);
     this.setProps({
       format:   Characteristic.Formats.STRING,
