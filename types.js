@@ -581,16 +581,16 @@ module.exports = function(homebridge) {
   CommunityTypes.VolatileOrganicCompoundPeakLevel.UUID = 'A62CB784-1916-4BDF-B840-BDB9F8A264E9';
   inherits(CommunityTypes.VolatileOrganicCompoundPeakLevel, Characteristic);
 
-  CommunityTypes.NotificationType = function() {
-    Characteristic.call(this, 'Notification String', CommunityTypes.NotificationType.UUID);
+  CommunityTypes.NotificationTet = function() {
+    Characteristic.call(this, 'Notification Text', CommunityTypes.NotificationText.UUID);
     this.setProps({
       format:   Characteristic.Formats.STRING,
       perms: [ Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY ]
     });
     this.value = null;
   };
-  CommunityTypes.NotificationType.UUID = '381C47A3-CB06-4177-8E3D-A1B4C22EB031';
-  inherits(CommunityTypes.NotificationType, Characteristic);
+  CommunityTypes.NotificationText.UUID = '381C47A3-CB06-4177-8E3D-A1B4C22EB031';
+  inherits(CommunityTypes.NotificationText, Characteristic);
 
   // Services
 
@@ -818,7 +818,7 @@ module.exports = function(homebridge) {
     Service.call(this, displayName, CommunityTypes.NotificationService.UUID, subtype);
 
     // Required Characteristics
-    this.addCharacteristic(CommunityTypes.NotificationType);
+    this.addCharacteristic(CommunityTypes.NotificationText);
 
     // Optional Characteristics
     this.addOptionalCharacteristic(Characteristic.Name);
