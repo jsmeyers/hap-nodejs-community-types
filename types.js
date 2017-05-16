@@ -581,6 +581,17 @@ module.exports = function(homebridge) {
   CommunityTypes.VolatileOrganicCompoundPeakLevel.UUID = 'A62CB784-1916-4BDF-B840-BDB9F8A264E9';
   inherits(CommunityTypes.VolatileOrganicCompoundPeakLevel, Characteristic);
 
+  CommunityTypes.NotificationType = function() {
+    Characteristic.call(this, 'Notification String', CommunityTypes.NotificationType.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.STRING,
+      perms: [ Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = null;
+  };
+  CommunityTypes.NotificationType.UUID = '381C47A3-CB06-4177-8E3D-A1B4C22EB031';
+  inherits(CommunityTypes.NotificationType, Characteristic);
+
   // Services
 
   CommunityTypes.AudioDeviceService = function(displayName, subtype) {
@@ -802,6 +813,18 @@ module.exports = function(homebridge) {
   };
   CommunityTypes.VolatileOrganicCompoundSensor.UUID = '776E34BC-1660-46EC-A33D-2DFE5B958699';
   inherits(CommunityTypes.VolatileOrganicCompoundSensor, Service);
+
+  CommunityTypes.NotificationService = function (displayName, subtype) {
+    Service.call(this, displayName, CommunityTypes.NotificationService.UUID, subtype);
+
+    // Required Characteristics
+    this.addCharacteristic(CommunityTypes.NotificationType);
+
+    // Optional Characteristics
+    this.addOptionalCharacteristic(Characteristic.Name);
+  };
+  CommunityTypes.NotificationService.UUID = '074D8CE9-5B4B-48D5-9990-D98850C2F3FE';
+  inherits(CommunityTypes.NotificationService, Service);
 
 
   return CommunityTypes;
