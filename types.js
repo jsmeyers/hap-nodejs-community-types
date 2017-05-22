@@ -590,7 +590,7 @@ module.exports = function(homebridge) {
       minStep: 1,
       perms: [ Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY ]
     });
-    this.value = null;
+    this.value = 255;
   };
   CommunityTypes.NotificationCode.UUID = '381C47A3-CB06-4177-8E3D-A1B4C22EB031';
   inherits(CommunityTypes.NotificationCode, Characteristic);
@@ -601,7 +601,7 @@ module.exports = function(homebridge) {
       format:   Characteristic.Formats.STRING,
       perms: [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
     });
-    this.value = null;
+    this.value = '';
   };
   CommunityTypes.NotificationText.UUID = 'e244ca80-813e-423a-86bd-02f293b857a0';
   inherits(CommunityTypes.NotificationText, Characteristic);
