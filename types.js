@@ -582,7 +582,7 @@ module.exports = function(homebridge) {
   inherits(CommunityTypes.VolatileOrganicCompoundPeakLevel, Characteristic);
 
   CommunityTypes.NotificationCode = function() {
-    Characteristic.call(this, 'Notification Text', CommunityTypes.NotificationCode.UUID);
+    Characteristic.call(this, 'Notification Code', CommunityTypes.NotificationCode.UUID);
     this.setProps({
       format:   Characteristic.Formats.UINT8,
       maxValue: 255,
@@ -594,6 +594,17 @@ module.exports = function(homebridge) {
   };
   CommunityTypes.NotificationCode.UUID = '381C47A3-CB06-4177-8E3D-A1B4C22EB031';
   inherits(CommunityTypes.NotificationCode, Characteristic);
+
+  CommunityTypes.NotificationText = function() {
+    Characteristic.call(this, 'Notification Text', CommunityTypes.NotificationText.UUID);
+    this.setProps({
+      format:   Characteristic.Formats.STRING,
+      perms: [ Characteristic.Perms.READ, Characteristic.Perms.NOTIFY ]
+    });
+    this.value = null;
+  };
+  CommunityTypes.NotificationText.UUID = 'e244ca80-813e-423a-86bd-02f293b857a0';
+  inherits(CommunityTypes.NotificationText, Characteristic);
 
   // Services
 
@@ -822,6 +833,7 @@ module.exports = function(homebridge) {
 
     // Required Characteristics
     this.addCharacteristic(CommunityTypes.NotificationCode);
+    this.addCharacteristic(CommunityTypes.NotificationText);
 
     // Optional Characteristics
     this.addOptionalCharacteristic(Characteristic.Name);
